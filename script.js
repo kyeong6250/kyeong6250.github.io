@@ -16,6 +16,7 @@ navLinks.querySelectorAll("a").forEach((link) => {
 
 // Typing effect
 const roles = [
+  "AI Specialist @ Handshake AI",
   "Computer Science Student",
   "USAF Medical Logistics Technician",
   "Cybersecurity Trainee",
