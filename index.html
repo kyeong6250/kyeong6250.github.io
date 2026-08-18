@@ -36,11 +36,10 @@
     <h1 class="reveal">Kyeong Hun Yang</h1>
     <p class="hero-role reveal"><span id="typed"></span><span class="cursor">|</span></p>
     <p class="hero-bio reveal">
-      Operations Specialist and Computer Science student with 4+ years of hands-on experience across
-      AI data evaluation, high-stakes logistics, and technical evaluation environments. Currently
-      evaluating AI training data at Handshake AI while managing $25M+ in assets as a U.S. Air Force
-      Medical Logistics Technician, with expertise in process optimization, data analysis, and secure
-      software development.
+      I split my time between evaluating AI training data at Handshake AI and managing $25M+ in
+      medical equipment as an active-duty Air Force logistics technician, and I build software on
+      the side. Operations work taught me to care about process and accountability; that's carried
+      straight over into how I approach code and security.
     </p>
     <div class="hero-actions reveal">
       <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -66,15 +65,14 @@
     <div class="about-grid">
       <p class="about-text reveal">
         I'm a Computer Science student at Southern New Hampshire University (GPA 3.9, expected
-        graduation Feb 2027) balancing full-time active-duty service in the United States Air Force with
-        an Artificial Intelligence Specialist role at Handshake AI and coursework in software
-        development and cybersecurity. As a Medical Logistics Technician, I manage over $25M in
-        emergency medical equipment and $200K+ in medical supply acquisitions with full payment
-        reconciliation, experience that sharpened my process optimization, risk analysis, and
-        executive reporting skills. At Handshake AI, I evaluate AI-generated reasoning and web-search
-        outputs for quality and instruction adherence. I'm channeling that same discipline into
-        secure software engineering, with hands-on project work in HTTPS/SSL implementation,
-        vulnerability scanning, and object-oriented Java development.
+        graduation Feb 2027), studying part-time around full-time active-duty service in the U.S. Air
+        Force. As a Medical Logistics Technician, I'm responsible for over $25M in emergency medical
+        equipment and $200K+ in supply acquisitions, every payment reconciled, which is where most of
+        my process optimization and risk analysis instincts come from. These days I also evaluate
+        AI-generated reasoning and web-search outputs at Handshake AI, checking for quality and
+        whether the model actually did what it was asked. I'm putting that same attention to detail
+        into secure software development on the side: HTTPS/SSL implementation, vulnerability
+        scanning, and object-oriented Java work.
       </p>
       <div class="about-cards">
         <div class="about-card reveal">
@@ -171,12 +169,39 @@
     <div class="projects-grid">
       <article class="project-card reveal">
         <div class="project-head">
+          <h3><a href="https://github.com/kyeong6250/gbemulator" target="_blank" rel="noopener">gbemulator</a></h3>
+          <span class="project-icon">🎮</span>
+        </div>
+        <p>A Game Boy emulator written in Python from the ground up: a full SM83 CPU, memory bus,
+          PPU, cartridge/MBC support, and a pygame frontend, with a test suite covering the CPU
+          instruction set.</p>
+        <div class="pill-row">
+          <span class="pill pill-sm">Python</span>
+          <span class="pill pill-sm">Emulation</span>
+          <span class="pill pill-sm">pytest</span>
+        </div>
+      </article>
+      <article class="project-card reveal">
+        <div class="project-head">
+          <h3><a href="https://github.com/kyeong6250/Better-curl" target="_blank" rel="noopener">Better-curl</a></h3>
+          <span class="project-icon">🌐</span>
+        </div>
+        <p>A CLI that sends HTTP requests described by a YAML/JSON file instead of curl flags you
+          have to reassemble from memory every time. Clean error handling, full test coverage, real
+          packaging.</p>
+        <div class="pill-row">
+          <span class="pill pill-sm">Python</span>
+          <span class="pill pill-sm">CLI</span>
+          <span class="pill pill-sm">pytest</span>
+        </div>
+      </article>
+      <article class="project-card reveal">
+        <div class="project-head">
           <h3>Artemis Financial Secure Software</h3>
           <span class="project-icon">🔒</span>
         </div>
-        <p>Secured a Spring Boot application end-to-end: implemented HTTPS with SSL certificates,
-          built SHA-256 checksum verification, and ran vulnerability analysis with OWASP
-          Dependency-Check to apply secure development best practices.</p>
+        <p>Secured a Spring Boot application end-to-end: HTTPS with SSL certificates, SHA-256
+          checksum verification, and dependency vulnerability scanning with OWASP Dependency-Check.</p>
         <div class="pill-row">
           <span class="pill pill-sm">Spring Boot</span>
           <span class="pill pill-sm">SSL/TLS</span>
@@ -186,26 +211,11 @@
       </article>
       <article class="project-card reveal">
         <div class="project-head">
-          <h3>Boots2Bytes Cybersecurity Training</h3>
-          <span class="project-icon">🧪</span>
-        </div>
-        <p>Completed hands-on cybersecurity labs covering core security principles and threat
-          identification, and practiced incident response, risk analysis, and security
-          documentation.</p>
-        <div class="pill-row">
-          <span class="pill pill-sm">Incident Response</span>
-          <span class="pill pill-sm">Risk Analysis</span>
-          <span class="pill pill-sm">Security Docs</span>
-        </div>
-      </article>
-      <article class="project-card reveal">
-        <div class="project-head">
           <h3>Java Contact / Task / Appointment Systems</h3>
           <span class="project-icon">🗂️</span>
         </div>
-        <p>Built a suite of Java management systems (Contact, Task, and Appointment) using
-          object-oriented design, backed by JUnit tests. Also developed standalone Java and C++
-          applications applying core OOP principles.</p>
+        <p>A suite of Java management systems (Contact, Task, and Appointment) built around
+          object-oriented design, backed by JUnit tests.</p>
         <div class="pill-row">
           <span class="pill pill-sm">Java</span>
           <span class="pill pill-sm">C++</span>
@@ -214,7 +224,7 @@
         </div>
       </article>
     </div>
-    <p class="projects-note reveal">Repo links will go live here as these projects are pushed to <a href="https://github.com/kyeong6250" target="_blank" rel="noopener">github.com/kyeong6250</a>.</p>
+    <p class="projects-note reveal">More on <a href="https://github.com/kyeong6250" target="_blank" rel="noopener">github.com/kyeong6250</a>.</p>
   </section>
 
   <section id="experience" class="section">
@@ -227,10 +237,9 @@
           <p class="timeline-org">Handshake AI · Remote</p>
           <p class="timeline-date">July 2026 to Present</p>
           <ul>
-            <li>Execute multiple AI training-data evaluation projects, ensuring high-quality reasoning and web-search outputs for complex coding and reasoning tasks</li>
-            <li>Manage the evaluation of AI-generated outputs for instruction adherence and quality, identifying model failures to maintain project integrity</li>
-            <li>Contribute to workflow documentation by tracking recurring quality issues and model errors to drive continuous performance improvements</li>
-            <li>Collaborate on the creation of challenging reasoning prompts to test system weaknesses and optimize AI search capabilities</li>
+            <li>Evaluate AI-generated outputs on complex coding and reasoning tasks for instruction-following and quality</li>
+            <li>Track recurring model failures and document them clearly enough to actually drive fixes, not just flag them</li>
+            <li>Write challenging reasoning prompts specifically to find where a model's reasoning or search capability breaks down</li>
           </ul>
         </div>
       </div>
@@ -241,8 +250,8 @@
           <p class="timeline-org">iZen AI Inc. · Remote</p>
           <p class="timeline-date">January 2026 to Present</p>
           <ul>
-            <li>Completed intensive training in defensive security and risk assessment, focusing on identifying threats within technical ecosystems</li>
-            <li>Analyzed technical scenarios and documented findings to improve structured problem-solving and technical communication workflows</li>
+            <li>Working through defensive security and risk assessment training, focused on identifying threats in real technical environments</li>
+            <li>Analyzing technical scenarios and writing up findings the way an actual security team would expect them documented</li>
           </ul>
         </div>
       </div>
@@ -253,12 +262,12 @@
           <p class="timeline-org">United States Air Force · Lackland Air Force Base, TX</p>
           <p class="timeline-date">August 2021 to Present</p>
           <ul>
-            <li>Execute payment reconciliation for over $200K in medical supply acquisitions, coordinating research, ordering, and tracking to support financial integrity</li>
-            <li>Apply Lean Six Sigma for process optimization and workflow standardization, reducing service bottlenecks and improving task coordination</li>
-            <li>Manage queue management for 400+ supply custodians, resolving status requests and maintaining high service levels for cross-functional customers</li>
-            <li>Perform complex data analysis in Microsoft Excel to prepare readiness reports and briefings, ensuring SLA management compliance for contingency operations</li>
-            <li>Manage $25M in emergency medical equipment, tracking operational priorities and accountability for critical healthcare benefits infrastructure</li>
-            <li>Provide IT support and Windows workstation troubleshooting</li>
+            <li>Reconcile payments on $200K+ in medical supply acquisitions, from research through ordering and tracking</li>
+            <li>Applied Lean Six Sigma to cut process bottlenecks and standardize workflows across the team</li>
+            <li>Run queue management for 400+ supply custodians, keeping status requests and service levels on track</li>
+            <li>Build readiness reports and briefings in Excel, meeting SLA deadlines for contingency operations</li>
+            <li>Accountable for $25M in emergency medical equipment</li>
+            <li>Handle IT support and Windows workstation troubleshooting on the side</li>
           </ul>
         </div>
       </div>
