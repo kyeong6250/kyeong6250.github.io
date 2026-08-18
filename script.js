@@ -1,80 +1,48 @@
-// Mobile nav toggle
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
-
-navToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  navToggle.classList.toggle("open", isOpen);
-  navToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    navToggle.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-  });
-});
-
-// Typing effect
-const roles = [
-  "AI Specialist @ Handshake AI",
-  "Computer Science Student",
-  "USAF Medical Logistics Technician",
-  "Cybersecurity Trainee",
-  "Secure Software Enthusiast",
-];
-
-const typedEl = document.getElementById("typed");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function tick() {
-  const current = roles[roleIndex];
-
-  if (!deleting) {
-    charIndex++;
-    typedEl.textContent = current.slice(0, charIndex);
-    if (charIndex === current.length) {
-      deleting = true;
-      setTimeout(tick, 1400);
-      return;
-    }
-  } else {
-    charIndex--;
-    typedEl.textContent = current.slice(0, charIndex);
-    if (charIndex === 0) {
-      deleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-    }
+document.addEventListener('DOMContentLoaded', function () {
+  var navToggleBtn = document.getElementById('navToggleBtn');
+  var siteNav = document.getElementById('siteNav');
+  if (navToggleBtn && siteNav) {
+    navToggleBtn.addEventListener('click', function () {
+      var isOpen = siteNav.classList.toggle('open');
+      siteNav.style.maxHeight = isOpen ? '320px' : '0px';
+      navToggleBtn.classList.toggle('open', isOpen);
+      navToggleBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    siteNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        siteNav.classList.remove('open');
+        siteNav.style.maxHeight = '0px';
+        navToggleBtn.classList.remove('open');
+        navToggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
-  setTimeout(tick, deleting ? 40 : 70);
-}
-
-if (prefersReducedMotion) {
-  typedEl.textContent = roles[0];
-} else {
-  tick();
-}
-
-// Scroll reveal
-const revealEls = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
+  var els = Array.from(document.querySelectorAll('[data-reveal]'));
+  function reveal(el) {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }
+  function checkAll() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < vh - 60 && rect.bottom > 0) reveal(el);
     });
-  },
-  { threshold: 0.15 }
-);
-
-revealEls.forEach((el) => observer.observe(el));
-
-// Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+  }
+  var io = null;
+  if (typeof IntersectionObserver !== 'undefined') {
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+  window.addEventListener('scroll', checkAll, { passive: true });
+  window.addEventListener('resize', checkAll);
+  checkAll();
+});
