@@ -51,7 +51,7 @@ section:not(#home) h2:after{background:var(--line)}
 #projects article>div:not(.project-schematic) span{border:0;border-radius:0;padding:0;background:transparent;color:var(--lime)!important;font-size:10px!important}
 #projects article>div:not(.project-schematic) span+span:before{content:"/ ";color:#7f9187}
 #projects .project-schematic{margin:12px 0 28px!important;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
-.project-schematic span{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:72px;padding:12px 8px;border:1px solid #596a60;background:#111a1b;color:#eff7e8;font:24px 'Anton',sans-serif;letter-spacing:.02em;text-align:center}
+#projects article .project-schematic span{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:72px;padding:12px 8px!important;border:1px solid #596a60!important;border-radius:0!important;background:#111a1b!important;color:#eff7e8!important;font:24px 'Anton',sans-serif!important;letter-spacing:.02em;text-align:center}
 .project-schematic span+span:before{content:"";position:absolute;left:-6px;top:50%;width:6px;border-top:1px solid var(--lime)}
 .project-schematic small{color:var(--lime);font:9px 'IBM Plex Mono',monospace;letter-spacing:.1em}
 #projects .project-source{display:inline-flex;gap:16px;align-items:center;align-self:flex-start;margin-top:22px;padding-bottom:5px;border-bottom:1px solid var(--lime);color:var(--lime);text-decoration:none;font:11px 'IBM Plex Mono',monospace;letter-spacing:.08em}
