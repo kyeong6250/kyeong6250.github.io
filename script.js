@@ -68,20 +68,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var navLinks = Array.from(document.querySelectorAll('header nav.site-nav a[href^="#"]'));
   var sections = navLinks.map(function (link) { return document.querySelector(link.getAttribute('href')); }).filter(Boolean);
-  if ('IntersectionObserver' in window) {
-    var navObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(function (link) {
-          var active = link.getAttribute('href') === '#' + entry.target.id;
-          link.classList.toggle('active', active);
-          if (active) link.setAttribute('aria-current', 'location');
-          else link.removeAttribute('aria-current');
-        });
-      });
-    }, { rootMargin: '-25% 0px -55% 0px' });
-    sections.forEach(function (section) { navObserver.observe(section); });
+  function updateActiveNav() {
+    var marker = window.scrollY + window.innerHeight * .35;
+    var current = null;
+    sections.forEach(function (section) {
+      if (section.getBoundingClientRect().top + window.scrollY <= marker) current = section.id;
+    });
+    navLinks.forEach(function (link) {
+      var active = link.getAttribute('href') === '#' + current;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
   }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  window.addEventListener('resize', updateActiveNav);
+  updateActiveNav();
 
   if (!reducedMotion.matches) {
     document.querySelectorAll('#projects article').forEach(function (card) {
