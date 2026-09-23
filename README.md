@@ -24,7 +24,8 @@ Then open `http://localhost:4173/`. You can also open `index.html` directly, tho
 ## Update content
 
 - `index.html` contains page content and base layout.
-- `enhancements.css` contains the visual theme, animations, and responsive styles.
+- `enhancements.css` contains the original visual upgrade and motion.
+- `editorial.css` sets the current graphite and lime design, project layout, and responsive refinements.
 - `script.js` handles the mobile menu, scroll reveals, active navigation, and card effects.
 - `assets/Kyeong-Hun-Yang-Resume.pdf` is the public résumé download. Replace this file when publishing a new résumé; keep score reports and other private documents out of the repository.
 
