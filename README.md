@@ -26,6 +26,7 @@ Then open `http://localhost:4173/`. You can also open `index.html` directly, tho
 - `index.html` contains page content and base layout.
 - `enhancements.css` contains the original visual upgrade and motion.
 - `editorial.css` sets the current graphite and lime design, project layout, and responsive refinements.
+- `cinematic.css` and `cinematic.js` add the portrait reveal, slow camera movement, and emulator diagram sequence; reduced-motion settings skip these effects.
 - `script.js` handles the mobile menu, scroll reveals, active navigation, and card effects.
 - `assets/Kyeong-Hun-Yang-Resume.pdf` is the public résumé download. Replace this file when publishing a new résumé; keep score reports and other private documents out of the repository.
 
