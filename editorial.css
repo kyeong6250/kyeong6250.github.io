@@ -68,3 +68,31 @@ section:not(#home) h2:after{background:var(--line)}
 @media(max-width:780px){#home{background:radial-gradient(ellipse 90% 43% at 75% 83%,rgba(69,132,128,.29),transparent 83%),radial-gradient(ellipse 60% 20% at 100% 12%,rgba(211,156,113,.1),transparent 85%)}#home:before{top:27%;right:-75%;width:170%;height:84%;opacity:.75}#home:after{mask-image:linear-gradient(180deg,transparent 22%,#000 100%)}}
 @media(max-width:650px){#projects>div{grid-template-columns:1fr!important}#projects article,#projects article:first-child,#projects article:nth-child(2){grid-column:auto!important;min-height:0}#projects article:first-child{min-height:390px}#projects .project-schematic{grid-template-columns:repeat(2,minmax(0,1fr))}.project-schematic span:nth-child(3):before{display:none}#home>div:nth-child(4) span:not(:first-child):before{content:""}#home>div:nth-child(4){gap:8px 14px!important}}
 @media(prefers-reduced-motion:reduce){#projects article:hover{transform:none!important}}
+/* Projects: Featured / All recent tabs, and the full project index */
+#projects>.project-tabs{display:flex;gap:30px!important;margin:-14px 0 34px;border-bottom:1px solid var(--line)}
+html:not(.js) #projects>.project-tabs{display:none}
+.project-tabs button{position:relative;min-height:46px;padding:12px 0;border:0;background:none;color:#aab3ad;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.project-tabs button:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.project-tabs button:hover,.project-tabs button[aria-selected="true"]{color:#fff}
+.project-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
+.project-tabs button span{margin-left:6px;color:var(--lime)}
+#projects [role="tabpanel"][hidden]{display:none!important}
+.project-index>h3{margin:56px 0 18px;font:400 clamp(23px,2vw,30px)/1.13 'Anton',sans-serif;text-transform:uppercase}
+.js .project-index>h3{display:none}
+.project-index ol{list-style:none;margin:0;padding:0}
+.project-index li{display:grid;grid-template-columns:minmax(0,3.2fr) minmax(0,6fr) minmax(0,2.6fr);gap:10px 34px;align-items:start;padding:26px 0;border-bottom:1px solid var(--line)}
+.project-index li:first-child{padding-top:4px}
+.project-index h4{margin:0;font:400 clamp(21px,1.9vw,27px)/1.15 'Anton',sans-serif;letter-spacing:.01em;text-transform:uppercase;overflow-wrap:anywhere}
+.project-index h4 a{display:inline-block;padding:7px 0;color:#fff;text-decoration:none}
+.project-index h4 a:hover{color:var(--lime)}
+.project-index .when{display:block;margin-top:2px;color:#aab3ad;font:11px 'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+.project-index p{margin:0;max-width:62ch;color:#bbc6bf;font-size:15px;line-height:1.65}
+.project-index .stack{display:block;margin-top:12px;color:var(--lime);font:11px 'IBM Plex Mono',monospace;letter-spacing:.04em}
+.project-index .links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px 24px;padding-top:6px}
+#projects .project-index .project-source{margin-top:0}
+/* Larger hit area for the small text links without moving their underline */
+#projects .project-source{position:relative}
+#projects .project-source:after{content:"";position:absolute;inset:-14px -8px -12px}
+#projects>p a{display:inline-block;padding:13px 0}
+@media(max-width:860px){.project-index li{grid-template-columns:1fr;gap:12px;padding:24px 0}.project-index .links{justify-content:flex-start;padding-top:2px}#projects>.project-tabs{margin-top:-6px}}
+@media(prefers-reduced-motion:reduce){.project-tabs button:after{transition:none}}

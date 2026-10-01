@@ -19,20 +19,61 @@ document.addEventListener('DOMContentLoaded', function () {
   var navToggleBtn = document.getElementById('navToggleBtn');
   var siteNav = document.getElementById('siteNav');
   if (navToggleBtn && siteNav) {
-    navToggleBtn.addEventListener('click', function () {
-      var isOpen = siteNav.classList.toggle('open');
-      siteNav.style.maxHeight = isOpen ? '320px' : '0px';
+    var setNavOpen = function (isOpen) {
+      siteNav.classList.toggle('open', isOpen);
       navToggleBtn.classList.toggle('open', isOpen);
       navToggleBtn.setAttribute('aria-expanded', String(isOpen));
+    };
+    navToggleBtn.addEventListener('click', function () {
+      setNavOpen(!siteNav.classList.contains('open'));
     });
     siteNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        siteNav.classList.remove('open');
-        siteNav.style.maxHeight = '0px';
-        navToggleBtn.classList.remove('open');
-        navToggleBtn.setAttribute('aria-expanded', 'false');
+      link.addEventListener('click', function () { setNavOpen(false); });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && siteNav.classList.contains('open')) {
+        setNavOpen(false);
+        navToggleBtn.focus();
+      }
+    });
+    document.addEventListener('click', function (event) {
+      if (!siteNav.classList.contains('open')) return;
+      if (siteNav.contains(event.target) || navToggleBtn.contains(event.target)) return;
+      setNavOpen(false);
+    });
+  }
+
+  var projectTabs = Array.from(document.querySelectorAll('#projects [role="tab"]'));
+  function selectProjectTab(tab, moveFocus) {
+    projectTabs.forEach(function (item) {
+      var selected = item === tab;
+      item.setAttribute('aria-selected', String(selected));
+      item.tabIndex = selected ? 0 : -1;
+      document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+    });
+    if (moveFocus) tab.focus();
+  }
+  function selectProjectTabFromHash() {
+    var wanted = projectTabs.filter(function (tab) {
+      return '#' + tab.getAttribute('aria-controls') === location.hash;
+    })[0];
+    if (wanted) selectProjectTab(wanted, false);
+    return Boolean(wanted);
+  }
+  if (projectTabs.length) {
+    projectTabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () { selectProjectTab(tab, false); });
+      tab.addEventListener('keydown', function (event) {
+        var target = null;
+        if (event.key === 'ArrowRight') target = projectTabs[(index + 1) % projectTabs.length];
+        else if (event.key === 'ArrowLeft') target = projectTabs[(index - 1 + projectTabs.length) % projectTabs.length];
+        else if (event.key === 'Home') target = projectTabs[0];
+        else if (event.key === 'End') target = projectTabs[projectTabs.length - 1];
+        if (target) { event.preventDefault(); selectProjectTab(target, true); }
       });
     });
+    if (!selectProjectTabFromHash()) selectProjectTab(projectTabs[0], false);
+    window.addEventListener('hashchange', selectProjectTabFromHash);
   }
 
   var els = Array.from(document.querySelectorAll('[data-reveal]'));
